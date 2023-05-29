@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,7 +22,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.likelion.api_call_practice.Constants
+import com.example.likelion.api_call_practice.DogViewModel
 import com.example.likelion.ui.theme.LikeLionTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,12 +36,46 @@ class MainActivity : ComponentActivity() {
 
         setContent {
 
+            val viewModel = viewModel<DogViewModel>()
+
             LikeLionTheme {
                 // A surface container using the 'background' color from the theme
-                
             }
         }
     }
+}
+
+@Composable
+fun CustomCardView(modifier: Modifier = Modifier) {
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .border(1.dp, Color.Black, RoundedCornerShape(10.dp))
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .align(Alignment.Center)
+                .padding(10.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_launcher_background),
+                contentDescription = "image"
+            )
+            Text(
+                modifier = Modifier.padding(top = 2.dp),
+                text = "Status"
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CustomCardViewPreview() {
+    CustomCardView(Modifier.size(200.dp))
 }
 
 

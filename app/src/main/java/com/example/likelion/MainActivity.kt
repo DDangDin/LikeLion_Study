@@ -7,8 +7,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -25,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.likelion.api_call_practice.Constants
 import com.example.likelion.api_call_practice.DogViewModel
+import com.example.likelion.composable.InstaStoryView
 import com.example.likelion.ui.theme.LikeLionTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -36,77 +41,14 @@ class MainActivity : ComponentActivity() {
 
         setContent {
 
-            val viewModel = viewModel<DogViewModel>()
+//            val viewModel = viewModel<DogViewModel>()
 
             LikeLionTheme {
-                // A surface container using the 'background' color from the theme
+
             }
         }
     }
 }
 
-@Composable
-fun CustomCardView(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .border(1.dp, Color.Black, RoundedCornerShape(10.dp))
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .align(Alignment.Center)
-                .padding(10.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
-                contentDescription = "image"
-            )
-            Text(
-                modifier = Modifier.padding(top = 2.dp),
-                text = "Status"
-            )
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun CustomCardViewPreview() {
-    CustomCardView(Modifier.size(200.dp))
-}
 
 
-@Composable
-fun CountScreen(
-    modifier: Modifier = Modifier,
-    testClick: (Int) -> Unit,
-) {
-
-    var num by remember { mutableStateOf(0) }
-
-    Column(
-        modifier = modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            modifier = Modifier.padding(10.dp),
-            text = num.toString(),
-            fontSize = 30.sp
-        )
-        Button(
-            modifier = Modifier
-                .width(80.dp)
-                .height(50.dp),
-            onClick = {
-                num += 1
-                testClick(num)
-            }
-        ) {
-            Text(text = "1 증가")
-        }
-    }
-}

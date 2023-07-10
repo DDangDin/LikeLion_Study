@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
 }
 
@@ -90,12 +89,6 @@ dependencies {
     // Coroutine Lifecycle Scopes
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
 
-    //Dagger - Hilt
-    implementation 'com.google.dagger:hilt-android:2.44'
-    kapt 'com.google.dagger:hilt-compiler:2.44'
-    kapt "androidx.hilt:hilt-compiler:1.0.0"
-    implementation 'androidx.hilt:hilt-navigation-compose:1.1.0-alpha01'
-
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -104,4 +97,28 @@ dependencies {
 
     // Glide
     implementation "com.github.bumptech.glide:compose:1.0.0-alpha.1"
+
+//    // Room
+//    implementation "androidx.room:room-runtime:$room_version"
+//    kapt "androidx.room:room-compiler:$room_version"
+//    // Kotlin Extensions and Coroutines support for Room
+//    implementation "androidx.room:room-ktx:$room_version"
+
+    // Room for mac m1
+    implementation ("androidx.room:room-runtime:$room_version") {
+        exclude(group:'org.xerial')
+    }
+    kapt ("androidx.room:room-compiler:$room_version") {
+        exclude(group:'org.xerial')
+    }
+    implementation ("androidx.room:room-rxjava2:$room_version") {
+        exclude(group:'org.xerial')
+    }
+    testImplementation ("androidx.room:room-testing:$room_version") {
+        exclude(group:'org.xerial')
+    }
+    implementation("androidx.room:room-ktx:$room_version") {
+        exclude(group:'org.xerial')
+    }
+    implementation 'org.xerial:sqlite-jdbc:3.36.0'
 }

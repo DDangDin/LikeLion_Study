@@ -1,4 +1,4 @@
-package com.example.likelion
+package com.example.likelion.kotlin_study
 
 import java.io.BufferedReader
 import java.io.StringReader

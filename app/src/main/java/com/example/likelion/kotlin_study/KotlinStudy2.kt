@@ -1,4 +1,4 @@
-package com.example.likelion
+package com.example.likelion.kotlin_study
 
 import java.io.File
 
@@ -107,7 +107,7 @@ enum class Result {
 //    Error(val message: String)
 }
 
-//class ResultClass: com.example.likelion.Result -> "에러"
+//class ResultClass: com.example.likelion.kotlin_study.Result -> "에러"
 
 // sealed class는
 // sealed 클래스는 자기 자신이 추상 클래스이고,

@@ -41,10 +41,12 @@ class MainActivity : ComponentActivity() {
 
         setContent {
 
-//            val viewModel = viewModel<DogViewModel>()
+            val viewModel = viewModel<DogViewModel>()
 
             LikeLionTheme {
-
+                LaunchedEffect(key1 = viewModel.state.value) {
+                    Log.d("dogState", viewModel.state.value.dog.message)
+                }
             }
         }
     }

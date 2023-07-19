@@ -14,8 +14,15 @@ class DogViewModel: ViewModel() {
     val state: State<DogState> = _state
 
     init {
+        getDogImage()
+    }
+
+    fun getDogImage() {
         viewModelScope.launch {
             try {
+                _state.value = DogState(
+                    loading = true
+                )
                 val dog = Constants.dogApi.getDogImage()
                 _state.value = DogState(
                     dog = Dog(dog.message, dog.status),

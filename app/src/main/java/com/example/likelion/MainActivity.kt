@@ -36,6 +36,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.likelion.api_call_practice.DogViewModel
+import com.example.likelion.composable.FirstScreen
 import com.example.likelion.navigation.NavigationGraph
 import com.example.likelion.ui.theme.LikeLionTheme
 
@@ -53,7 +54,6 @@ class MainActivity : ComponentActivity() {
 //                }
 
                 val navController = rememberNavController()
-
                 NavigationGraph(navController = navController)
             }
         }
